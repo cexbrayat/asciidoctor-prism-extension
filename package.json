@@ -4,9 +4,17 @@
   "description": "Highlight Asciidoc code listings with Prism.js, server side, with no front-end dependencies.",
   "type": "module",
   "main": "index.js",
-  "exports": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "default": "./index.js"
+    }
+  },
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js && npm run typecheck",
+    "typecheck": "tsc"
   },
   "repository": {
     "type": "git",
@@ -36,7 +44,9 @@
     "prismjs": "^1.27.0"
   },
   "devDependencies": {
-    "@asciidoctor/core": "^4.0.0"
+    "@asciidoctor/core": "^4.0.0",
+    "@types/node": "^26.0.1",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@asciidoctor/core": "^4.0.0"
